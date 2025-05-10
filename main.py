@@ -1,4 +1,5 @@
 from google import genai
+import google.generativeai as genai
 
 client = genai.Client(api_key="AIzaSyDNiBsbqkhe-nmze0uRwr80taQLCYfxpYo")
 
