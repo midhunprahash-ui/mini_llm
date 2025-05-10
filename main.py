@@ -1,10 +1,10 @@
-from google import genai
+import google.generativeai as genai
 
-client = genai.Client(api_key="AIzaSyDNiBsbqkhe-nmze0uRwr80taQLCYfxpYo")
+genai.configure(api_key="AIzaSyDNiBsbqkhe-nmze0uRwr80taQLCYfxpYo")
 
-response = client.models.generate_content(
-    model="gemini-2.0-flash",
-    contents="Explain how AI works in a few words",
+response = genai.generate_text(
+    model="gemini-pro",
+    prompt="Explain how AI works in a few words",
 )
 
 print(response.text)
