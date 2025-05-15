@@ -9,7 +9,7 @@ api_key = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
 # Use the model directly
-model = client.generative_model("gemini-2.0-pro")
+model = client.generative_model("gemini-2.0-flash")
 
 app = Flask(__name__)
 
