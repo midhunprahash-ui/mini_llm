@@ -3,17 +3,18 @@ from google import genai
 import os
 from dotenv import load_dotenv
 
+# Load API key from .env
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+api_key = os.getenv("GEMINI_API_KEY")
+client = genai.Client(api_key=api_key)
+
+# Set model
+model = client.models.get("gemini-2.0-pro")
 
 app = Flask(__name__)
 
-# Replace with your actual Gemini API key
-client = genai.Client(api_key="AIzaSyDNiBsbqkhe-nmze0uRwr80taQLCYfxpYo")
-
 def ask_gemini(user_prompt, temperature=0.5):
-    response = client.models.generate_content(
-        model="gemini-2.0-pro",
+    response = model.generate_content(
         contents=[
             {
                 "role": "system",
@@ -27,9 +28,9 @@ def ask_gemini(user_prompt, temperature=0.5):
                 "parts": [user_prompt],
             },
         ],
-        generation_config={
-            "temperature": temperature
-        }
+        generation_config=genai.types.GenerationConfig(
+            temperature=temperature
+        )
     )
     return response.text.strip()
 
