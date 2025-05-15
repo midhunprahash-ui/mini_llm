@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Code Assistant</title>
+</head>
+
+<body>
+    <h2>Code Assistant</h2>
+    <form method="POST">
+        <textarea name="prompt" rows="5" cols="60" placeholder="Type something..."></textarea><br><br>
+        <input type="range" name="temperature" min="0.1" max="1.0" step="0.1" value="{{ temperature }}">
+        <br><br>
+        <button type="submit">Run</button>
+    </form>
+
+    {% if output %}
+    <hr>
+    <h3>Output:</h3>
+    <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+
+</html>
